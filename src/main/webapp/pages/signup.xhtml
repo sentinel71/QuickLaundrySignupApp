@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+ 
+<h:head>
+<!-- 	<h:outputStylesheet name="index.css" library="css" /> -->
+<!-- 	<h:outputStylesheet name="css/index.css"  /> -->
+<!-- 	<link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/css/index.css"/> -->
+	<script src="#{facesContext.externalContext.requestContextPath}/javascript/prototype.js" ></script>
+	<script src="#{facesContext.externalContext.requestContextPath}/javascript/scriptaculous.js" ></script>
+</h:head>
+<h:body>
+
+	<h:form id="myForm">
+	  	<p:inputText id="email" value="#{signUp.email}" size="30">
+	  		
+	  	</p:inputText>	  		
+	  	<p:watermark value="name@email.com"  forElement=":myForm:email"/>
+	  	
+<!-- 	  	<p:commandButton id="go" value="Go"  action="#{signUp.signup}" ajax="false" onclick="return validateForm();"></p:commandButton> -->
+		<h:commandButton id="go" value="Go"  onclick="return validateForm();" >
+<!-- 			<f:ajax execute="email" listener="#{signUp.signup}" ></f:ajax> -->
+		</h:commandButton>
+	  	
+	  	<p:inputText id="email1">	  		
+	  	</p:inputText>
+	  	<p:watermark value="name@email.com"  for="email1"/>
+	<script type="text/javascript">
+	function validateForm () {
+		var x = document.getElementById('myForm:email').value;		
+		var atpos = x.indexOf("@");
+		var dotpos=x.lastIndexOf(".");	
+		if (atpos &lt; 1 || dotpos &lt; atpos+2 || dotpos+2 &gt;= x.length)
+		{
+			document.getElementById('myForm:email').shake();
+			document.getElementById('myForm:go').shake();
+			return false;
+		}
+	}
+	</script>
+	</h:form>
+	
+</h:body>
+</html>

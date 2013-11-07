@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0"> 
+	
+	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value> /WEB-INF/applicationContext.xml
+		</param-value>		
+	</context-param>   
+      
+<!--    <filter> -->
+<!-- 	  <filter-name>springSecurityFilterChain</filter-name> -->
+<!-- 	  <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> -->
+<!-- 	</filter> -->
+	
+<!-- 	<filter-mapping> -->
+<!-- 	  <filter-name>springSecurityFilterChain</filter-name> -->
+<!-- 	  <url-pattern>/*</url-pattern> -->
+<!-- 	  <dispatcher>FORWARD</dispatcher> -->
+<!-- 	  <dispatcher>REQUEST</dispatcher> -->
+<!-- 	  <dispatcher>ERROR</dispatcher> -->
+<!--       <dispatcher>INCLUDE</dispatcher>  -->
+<!-- 	</filter-mapping> -->
+    
+   <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+    <listener>
+        <listener-class>
+            org.springframework.web.context.request.RequestContextListener
+        </listener-class>
+    </listener>
+  
+	<context-param> 
+	    <param-name>primefaces.THEME</param-name> 
+	    <param-value>glass-x</param-value> 
+	</context-param> 
+  
+  <!-- Change to "Production" when you are ready to deploy -->
+	<context-param>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Development</param-value>
+	</context-param>
+ 
+ 	 <context-param>
+	    <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+	    <param-value>true</param-value>
+	   </context-param>
+ 
+	<!-- Welcome page -->
+	<welcome-file-list>
+		<welcome-file>signup</welcome-file>
+	</welcome-file-list>
+ 
+	<!-- JSF mapping -->
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+<!-- 		<load-on-startup>1</load-on-startup> -->
+	</servlet>
+ 
+<!--  	<session-config><session-timeout>30</session-timeout></session-config> -->
+ 
+	<!-- Map these files with JSF -->
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>/faces/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.faces</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+	
+	
+	<!-- JSP mapping -->
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>ExampleServlet</servlet-name> -->
+<!-- 		<servlet-class>com.quicklaundry.portal.servlet.ExampleServlet</servlet-class> -->
+<!-- 		<load-on-startup>1</load-on-startup> -->
+<!-- 	</servlet> -->
+	
+	<!-- Map these files with JSP -->
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>ExampleServlet</servlet-name> -->
+<!-- 		<url-pattern>exampleServlet.do</url-pattern> -->
+<!-- 	</servlet-mapping> -->
+	
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>jersey-serlvet</servlet-name> -->
+<!-- 		<servlet-class> -->
+<!-- 			com.sun.jersey.spi.spring.container.servlet.SpringServlet -->
+<!-- 		</servlet-class> -->
+<!-- 		<init-param> -->
+<!-- 			<param-name>com.sun.jersey.config.property.packages</param-name> -->
+<!-- 			<param-value>com.cheapesto.portal.hotel.rws</param-value> -->
+<!-- 		</init-param> -->
+<!-- 		<init-param> -->
+<!-- 			<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name> -->
+<!-- 			<param-value>true</param-value> -->
+<!-- 		</init-param> -->
+<!-- 		<load-on-startup>1</load-on-startup> -->
+<!-- 	</servlet> -->
+ 
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>jersey-serlvet</servlet-name> -->
+<!-- 		<url-pattern>/rest/*</url-pattern> -->
+<!-- 	</servlet-mapping> -->
+	
+</web-app>	
